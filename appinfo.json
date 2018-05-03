@@ -1,0 +1,116 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "klejnov",
+    "longName": "\u0411\u043e\u0431\u0440\u0443\u0439\u0441\u043a. \u041f\u043e\u0433\u043e\u0434\u0430 \u0438 \u043a\u0443\u0440\u0441\u044b \u0432\u0430\u043b\u044e\u0442",
+    "projectType": "pebblejs",
+    "resources": {
+        "media": [
+            {
+                "file": "images/menu_icon.png",
+                "name": "IMAGE_MENU_ICON",
+                "type": "bitmap"
+            },
+            {
+                "file": "images/logo_splash.png",
+                "name": "IMAGE_LOGO_SPLASH",
+                "type": "bitmap"
+            },
+            {
+                "file": "images/tile_splash.png",
+                "name": "IMAGE_TILE_SPLASH",
+                "type": "bitmap"
+            },
+            {
+                "file": "fonts/UbuntuMono-Regular.ttf",
+                "name": "MONO_FONT_14",
+                "type": "font"
+            },
+            {
+                "file": "images/cloud-reload.png",
+                "name": "IMAGES_CLOUD_RELOAD_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_wind.png",
+                "name": "IMAGES_IC_WEATHER_WIND_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_snow.png",
+                "name": "IMAGES_IC_WEATHER_SNOW_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_sleet.png",
+                "name": "IMAGES_IC_WEATHER_SLEET_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_rain.png",
+                "name": "IMAGES_IC_WEATHER_RAIN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_partly_cloudy_night.png",
+                "name": "IMAGES_IC_WEATHER_PARTLY_CLOUDY_NIGHT_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_partly_cloudy_day.png",
+                "name": "IMAGES_IC_WEATHER_PARTLY_CLOUDY_DAY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_no_icon.png",
+                "name": "IMAGES_IC_WEATHER_NO_ICON_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_cloudy.png",
+                "name": "IMAGES_IC_WEATHER_CLOUDY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_clear_night.png",
+                "name": "IMAGES_IC_WEATHER_CLEAR_NIGHT_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/ic_weather_clear_day.png",
+                "name": "IMAGES_IC_WEATHER_CLEAR_DAY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/exchange_rates.png",
+                "name": "IMAGES_EXCHANGE_RATES_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/weather_icon.png",
+                "name": "IMAGES_WEATHER_ICON_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "IMAGES_MENU_ICON_PNG",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "Bobruisk info",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "565c3091-babe-4829-a80a-5c34f8509f68",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "hiddenApp": false,
+        "watchface": false
+    }
+}
