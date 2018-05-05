@@ -29,6 +29,11 @@
                 "type": "font"
             },
             {
+                "file": "images/house-icon.png",
+                "name": "IMAGES_HOUSE_ICON_PNG",
+                "type": "png"
+            },
+            {
                 "file": "images/cloud-reload.png",
                 "name": "IMAGES_CLOUD_RELOAD_PNG",
                 "type": "png"
@@ -106,9 +111,9 @@
     "targetPlatforms": [
         "basalt"
     ],
-    "uuid": "565c3091-babe-4829-a80a-5c34f8509f68",
+    "uuid": "14d027b8-4fb2-47f0-9a8a-be8d1b5a754c",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "hiddenApp": false,
         "watchface": false
