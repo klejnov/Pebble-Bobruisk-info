@@ -2,29 +2,6 @@ var UI = require('ui');
 var ajax = require('ajax');
 var Vector2 = require('vector2');
 
-// Construct the app glance slice object
-var CurrentTime = new Date();
-CurrentTime.setMinutes(CurrentTime.getMinutes() + 5);
-console.log(CurrentTime);
-
-
-var appGlanceSlices = [{
-    "layout": {
-        "subtitleTemplateString": "Pogoda i kursi valut"
-    },
-    "expirationTime": CurrentTime
-  }];
-
-function appGlanceSuccess(appGlanceSlices, appGlanceReloadResult) {
-    console.log('SUCCESS!');
-    console.log(CurrentTime);
-}
-
-function appGlanceFailure(appGlanceSlices, appGlanceReloadResult) {
-    console.log('FAILURE!');
-}
-
-
 // Loading Window Weather
 var WindowWeather = new UI.Window({
     status: true,
@@ -80,68 +57,79 @@ var loadingCurrencyBg = new UI.Rect({
 
 var loadingTitleCurrency = new UI.Text({
     position: new Vector2(0, 0),
-    size: new Vector2(144, 25),
+    size: new Vector2(144, 20),
     text: '',
     font: 'GOTHIC_18',
     color: 'white',
     textOverflow: 'wrap',
     textAlign: 'center',
-    backgroundColor: 'red'
+    backgroundColor: 'deepskyblue'
 });
 
 var loadingValueCurrency = new UI.Text({
-    position: new Vector2(0, 25),
-    size: new Vector2(144, 75),
+    position: new Vector2(0, 20),
+    size: new Vector2(144, 72),
     text: '',
     font: 'GOTHIC_24_BOLD',
     color: 'white',
     textOverflow: 'wrap',
     textAlign: 'center',
-    backgroundColor: 'green'
+    backgroundColor: 'deepskyblue'
 });
 
 var loadingUpdateCurrency = new UI.Text({
-    position: new Vector2(0, 100),
+    position: new Vector2(0, 92),
     size: new Vector2(144, 20),
     text: '',
     font: 'GOTHIC_14',
     color: 'white',
     textOverflow: 'wrap',
     textAlign: 'center',
-    backgroundColor: 'blue'
+    backgroundColor: 'deepskyblue'
 });
 
 var loadingTitleCurrency_nbrb = new UI.Text({
-    position: new Vector2(0, 120),
-    size: new Vector2(144, 25),
+    position: new Vector2(0, 112),
+    size: new Vector2(144, 20),
     text: 'НАЦ.БАНК РБ',
     font: 'GOTHIC_18',
     color: 'white',
     textOverflow: 'wrap',
     textAlign: 'center',
-    backgroundColor: 'red'
+    backgroundColor: 'orange'
 });
 
 var loadingTitleCurrency_nbrbToday = new UI.Text({
-    position: new Vector2(0, 145),
-    size: new Vector2(144, 25),
+    position: new Vector2(0, 132),
+    size: new Vector2(144, 20),
     text: '',
     font: 'GOTHIC_18',
     color: 'white',
     textOverflow: 'wrap',
     textAlign: 'center',
-    backgroundColor: 'red'
+    backgroundColor: 'orange'
 });
 
 var loadingValueCurrency_nbrb = new UI.Text({
-    position: new Vector2(0, 170),
+    position: new Vector2(0, 152),
     size: new Vector2(144, 75),
     text: '',
     font: 'GOTHIC_24_BOLD',
     color: 'white',
     textOverflow: 'wrap',
     textAlign: 'center',
-    backgroundColor: 'green'
+    backgroundColor: 'orange'
+});
+
+var loadingUpdateCurrency_nbrb = new UI.Text({
+    position: new Vector2(0, 227),
+    size: new Vector2(144, 37),
+    text: '',
+    font: 'GOTHIC_14',
+    color: 'white',
+    textOverflow: 'wrap',
+    textAlign: 'center',
+    backgroundColor: 'orange'
 });
 
 // Loading Window Home
@@ -240,6 +228,7 @@ menu.on('select', function (e) {
         WindowCurrency.add(loadingTitleCurrency_nbrb);
         WindowCurrency.add(loadingTitleCurrency_nbrbToday);
         WindowCurrency.add(loadingValueCurrency_nbrb);
+        WindowCurrency.add(loadingUpdateCurrency_nbrb);
 
         console.log('Открыто меню курсов валют');
 
@@ -251,9 +240,7 @@ menu.on('select', function (e) {
 
 });
 
-function updateWeather() {
-    // Trigger a reload of the slices in the app glance
-    Pebble.appGlanceReload(appGlanceSlices, appGlanceSuccess, appGlanceFailure);
+function updateWeather() {  
 
     loadingInfo.text('');
     icoWeather.image('images/cloud-reload.png');
@@ -373,6 +360,7 @@ function updateCurrency() {
 
     loadingTitleCurrency.text('ПОКУПКА  |  ПРОДАЖА');
     loadingUpdateCurrency.text('Обновление');
+    loadingUpdateCurrency_nbrb.text('Обновление');
 
     // Получаем json из API
     ajax({
@@ -418,7 +406,7 @@ function updateCurrencyNbrb() {
             eur_nbrb = data[5].Cur_OfficialRate;
             rub_nbrb = data[16].Cur_OfficialRate;
 
-            console.log('Нац.банк USD сегодня: ' + data[4].Cur_OfficialRate + 'дата: ' + data[4].Date);
+            console.log('Нац.банк USD сегодня: ' + data[4].Cur_OfficialRate + ' Дата: ' + data[4].Date);
 
             flagNbrb = true;
             showNbrb();
@@ -431,7 +419,8 @@ function updateCurrencyNbrb() {
 
     // Сгенерируем завтрашнюю дату
     var nextDayNbrb = new Date();
-    nextDayNbrb.setDate(nextDayNbrb.getDate() + 1);
+    console.log('Дата: ' + nextDayNbrb);
+    nextDayNbrb.setHours(nextDayNbrb.getHours() + 27);
     nextDayNbrb = (nextDayNbrb).toJSON();
     console.log('Дата: ' + nextDayNbrb);
 
@@ -449,7 +438,7 @@ function updateCurrencyNbrb() {
                 eur_nbrb_next = data[5].Cur_OfficialRate;
                 rub_nbrb_next = data[16].Cur_OfficialRate;
 
-                console.log('Нац.банк USD завтра: ' + data[4].Cur_OfficialRate + 'дата: ' + data[4].Date + 'дата: ' + usd_nbrb_next);
+                console.log('Нац.банк USD завтра: ' + data[4].Cur_OfficialRate + ' Дата: ' + data[4].Date);
 
             }
             flagNbrbNext = true;
@@ -466,6 +455,12 @@ function updateCurrencyNbrb() {
 
 function showNbrb() {
 
+    var dateNbrb = new Date();
+    dateNbrb.setHours(dateNbrb.getHours() + 3);
+    dateNbrb = (dateNbrb).toJSON().split('T');
+    dateNbrb = dateNbrb[1].split('.');
+    loadingUpdateCurrency_nbrb.text('Обновлено в: ' + dateNbrb[0]);
+  
     if (flagNbrb == true && flagNbrbNext == true) {
 
         if (usd_nbrb_next) {
