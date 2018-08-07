@@ -192,6 +192,7 @@ var menu = new UI.Menu({
 });
 
 menu.show();
+
 updateWeather();
 updateCurrency();
 
